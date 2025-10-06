@@ -1,0 +1,38 @@
+{
+  "projectSettings": {
+    "buildCommand": "bun run build",
+    "devCommand": "bun run dev",
+    "installCommand": "bun install",
+    "outputDirectory": ".next"
+  },
+  "functions": {
+    "src/app/api/submit/route.ts": {
+      "maxDuration": 30
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ]
+}
